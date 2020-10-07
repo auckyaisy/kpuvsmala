@@ -28,7 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '50a6144717a7.ngrok.io',
     'c3bb480000e2.ngrok.io',
-    '127.0.0.1'
+    '127.0.0.1',
+    'kpuvsmala.herokuapp.com',
+    'kpuvsmala.online'
 ]
 
 

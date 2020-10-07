@@ -5,9 +5,10 @@ from django.urls import reverse
 
 
 def index(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("login"))
-    return render(request, "pemilu/index.html")
+    return render(request, "pemilu/landingpage.html")
+    # if not request.user.is_authenticated:
+    #     return HttpResponseRedirect(reverse("login"))
+    # return render(request, "pemilu/index.html")
 
 
 def login_view(request):

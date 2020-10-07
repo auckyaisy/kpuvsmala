@@ -30,7 +30,8 @@ ALLOWED_HOSTS = [
     'c3bb480000e2.ngrok.io',
     '127.0.0.1',
     'kpuvsmala.herokuapp.com',
-    'kpuvsmala.online'
+    'kpuvsmala.online',
+    'www.kpuvsmala.online'
 ]
 
 

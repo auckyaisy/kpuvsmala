@@ -1,0 +1,156 @@
+{% extends "pemilu/layout.html" %}
+
+
+{% block title %}
+    pemilu smala
+{% endblock %}
+
+{% block main %}
+    <main>
+      <p><div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="div">
+          <h5>Username</h5>
+          <input name="username" type="text" class="input" required
+            oninvalid="this.setCustomValidity('Isikan username yang telah diberikan oleh panitia!')"
+            oninput="setCustomValidity('')">
+        </div>
+      </div>
+      </p>
+      <a href="#" class="btn btn-warning verif" onclick="enableButton2()">Verifikasi Data</a>
+      <br><br>
+      <button type="button" id="lanjut" name="button" class="btn btn-primary" onclick="window.location.href='/vote'" disabled>Lanjut</button>
+    </main>
+
+    <script>
+    function enableButton2() {
+        document.getElementById("lanjut").disabled = false;
+    }
+  </script>
+  <script>
+    const inputs = document.querySelectorAll(".input");
+
+
+      function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+      }
+
+      function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+          parent.classList.remove("focus");
+        }
+      }
+
+
+      inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+      });
+
+  </script>
+  <style>
+    body {
+      background-color: #071f27;
+      color: #d9d9d9;
+    }
+    main {
+      margin-top: 60px;
+      position: absolute;
+  left: 50%;
+  top: 50%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    transform: translate(-50%, -80%);
+    font-weight: bold;
+    font-size: 50px;
+    }
+      .verif {
+    text-decoration: none;
+      }
+      main p {
+        text-align: justify;
+        font-size: 30px;
+        color: white;
+      }
+      .i{
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.i i{
+	transition: .3s;
+}
+
+.input-div > div{
+    position: relative;
+	height: 45px;
+}
+
+.input-div > div > h5{
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+
+.input-div:before, .input-div:after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #766fff;
+	transition: .4s;
+}
+
+.input-div:before{
+	right: 50%;
+}
+
+.input-div:after{
+	left: 50%;
+}
+
+.input-div.focus:before, .input-div.focus:after{
+	width: 50%;
+}
+
+.input-div.focus > div > h5{
+	top: -5px;
+	font-size: 15px;
+}
+
+.input-div.focus > .i > i{
+	color: #766fff;
+}
+
+.input-div > div > input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+
+.input-div.pass{
+	margin-bottom: 4px;
+}
+  </style>
+{% endblock %}

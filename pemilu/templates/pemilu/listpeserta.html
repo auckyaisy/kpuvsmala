@@ -1,0 +1,29 @@
+{% extends "pemilu/layout.html" %}
+
+
+{% block title %}
+    PEMILIH
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">absen</th>
+          <th scope="col">konfirmasi</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for row in rows %}
+    <th scope="row"></th>
+      <tr>
+        <td>{{ row['absen'] }}</td>
+        <td>{{ row['verifikasi'] }}</td>
+      </tr>
+          <th scope="row"></th>
+    {% endfor %}
+          <th scope="row"></th>
+      </tbody>
+    </table>
+
+{% endblock %}

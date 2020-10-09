@@ -44,3 +44,6 @@ def verifikasi(request):
 def vote(request):
     return render(request, "pemilu/voting.html")
 
+
+def loaderio(request):
+    return render(request, "pemilu/loaderio-a4d352d8a6f3faa6ff162f58d006c23f.txt")

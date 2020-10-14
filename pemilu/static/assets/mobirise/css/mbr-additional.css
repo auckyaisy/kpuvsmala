@@ -773,7 +773,21 @@ a {
 .cid-s48vaXqeL6 .mbr-section-subtitle DIV {
   text-align: center;
 }
+.cid-sd6sG5DsYl {
+  background-image: url("{% static 'images/image.png' %}");
+}
+#visi2 {
+  background-image: url("{% static 'images/abdan.png' %}");
 
+}
+#visi3 {
+  background-image: url("{% static 'images/royyan.png' %}");
+  
+}
+#visi4 {
+  background-image: url("{% static 'images/wildan.png' %}");
+
+}
 .cid-sd6sG5DsYl .icon-wrapper {
   margin: auto;
   background-color: #6592e6;

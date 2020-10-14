@@ -1,5 +1,7 @@
 <!-- made with love @auckyaisy, 2020 -->
 <!DOCTYPE html>
+{% load static %}
+
 <html class="js svg" lang="en-US">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -413,18 +415,16 @@
          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
          }
       </style>
-      <link type="text/css" media="all" href="static/landingfiles/autoptimize_f53de00d55568c45887c84d8d3fe09e8.css" rel="stylesheet">
+      <link type="text/css" media="all" href="{% static 'landingfiles/autoptimize_f53de00d55568c45887c84d8d3fe09e8.css' %}" rel="stylesheet">
       <title>Kenali Pemimpinmu</title>
-      <script type="text/javascript" src="static/landingfiles/jquery.js.download"></script>
-      <script async="" src="static/landingfiles/modules.1cfb3da84f9afc64782a.js.download" charset="utf-8"></script>
+      <script type="text/javascript" src="{% static 'landingfiles/jquery.js.download' %}"></script>
       <style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style>
-      <script async="" src="static/landingfiles/modules.1cfb3da84f9afc64782a.js(1).download" charset="utf-8"></script>
       <style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style>
    </head>
    <body class="home page-template-default page page-id-2 sample-page-page" style="background-color: rgb(0, 0, 0);">
       <header>
          <nav class="navbar fixed-top ">
-             <a class="navbar-brand" href="/"><img width="50" height="50" src="static/logo.png"></a>
+             <a class="navbar-brand" href="/"><img width="50" height="50" src="{% static 'logo.png' %}"></a>
              <div class="right">
              <div class="dropdown" id="dropdown">
                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -469,7 +469,7 @@
              site.init();
          });
       </script>
-      <script type="text/javascript" defer="" src="static/landingfiles/autoptimize_b6801555a32eaf7be32b03d642d4258a.js.download"></script>
+      <script type="text/javascript" defer="" src="{% static 'landingfiles/autoptimize_b6801555a32eaf7be32b03d642d4258a.js' %}"></script>
       <style>
         body{
           overflow: hidden;
@@ -517,13 +517,9 @@ window.addEventListener('pageshow', function (event) {
         <footer>
           <nav class="navbar fixed-bottom navbar-light" style="background-color: rgba(0,0,0,0);">
               <a href="/kenali" style="text-decoration: none;" class="navi__link link">
-                 <img src="static/landingfiles/next.png" width="60px"alt="" style="opacity: 0.8;">
+                 <img src="{% static 'landingfiles/next.png' %}" width="60px"alt="" style="opacity: 0.8;">
               </a>
-          
-              <link href="http://siswa.edulab.co.id/assets-front/dash/lib/@fortawesome/fontawesome-free/css/all.min.css"
-                  rel="stylesheet">
-              <link href="http://siswa.edulab.co.id/assets-front/dash/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+         
           </nav>
           
           <script>

@@ -40,26 +40,31 @@ def logout_view(request):
 
 @login_required
 def verifikasi(request):
-    if request.method == 'POST':
+    try:
+        u = User.objects.get(username=f"{request.user.username}")
+        UserProfile.objects.get(user=u)
+        return redirect("/sesudah")
+    except:
+        if request.method == 'POST':
 
-        ''' Begin reCAPTCHA validation '''
-        recaptcha_response = request.POST.get('g-recaptcha-response')
-        data = {
-            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-        result = r.json()
-        ''' End reCAPTCHA validation '''
+            ''' Begin reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
+            ''' End reCAPTCHA validation '''
 
-        if result['success']:
-            return redirect('/vote')
+            if result['success']:
+                return redirect('/vote')
+            else:
+                return render(request, "pemilu/vote.html", {
+                    "message": "Captcha Salah"
+                })
         else:
-            return render(request, "pemilu/vote.html", {
-                "message": "Captcha Salah"
-            })
-
-    return render(request, "pemilu/vote.html")
+            return render(request, "pemilu/vote.html")
 
 
 @login_required
@@ -94,6 +99,7 @@ def visi3(request):
 def visi4(request):
     return render(request, "pemilu/visi4.html")
 
+
 @login_required
 def tentukan(request):
     try:
@@ -101,7 +107,7 @@ def tentukan(request):
             UserProfile.objects.get(user=u)
             return redirect("/sesudah")
     except:
-            return render(request, "pemilu/kartu.html")
+            return render(request, "pemilu/tentukan.html")
 
 @login_required
 def konfirmasi(request):

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Tentukan</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="static/tentukan/style.css">
+<link rel="stylesheet" href="{% static 'tentukan/style.css' %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
@@ -14,7 +14,7 @@
   <div class="text"></div>
 </div>
 <!-- partial -->
-  <script  src="static/tentukan/script.js"></script>
+  <script  src="{% static 'tentukan/script.js' %}"></script>
   <script>
     setTimeout(function(){
        window.location.href = '/verifikasi';

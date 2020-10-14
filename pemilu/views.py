@@ -17,21 +17,18 @@ def index(request):
 
 
 def login_view(request):
-    if not request.user.is_authenticated:
-        if request.method == "POST":
-            username = request.POST["username"]
-            password = request.POST["password"]
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return HttpResponseRedirect(reverse("index"))
-            else:
-                return render(request, "pemilu/login.html", {
-                    "message": "Tidak Ditemukan"
-                })
-        return render(request, "pemilu/login.html")
-    else:
-        return HttpResponseRedirect(reverse("index"))
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "pemilu/login.html", {
+                "message": "Tidak Ditemukan"
+            })
+    return render(request, "pemilu/login.html")
 
 
 def logout_view(request):
@@ -39,15 +36,6 @@ def logout_view(request):
     return render(request, "pemilu/login.html", {
         "message": "Keluar"
     })
-
-@login_required
-def peserta(request):
-    return render(request, "pemilu/peserta.html")
-
-
-@login_required
-def calon(request):
-    return render(request, "pemilu/calon.html")
 
 
 @login_required
@@ -80,7 +68,7 @@ def vote(request):
     try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("/sesudah")
     except:
             return render(request, "pemilu/kartu.html")
 
@@ -111,7 +99,7 @@ def tentukan(request):
     try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("/sesudah")
     except:
             return render(request, "pemilu/kartu.html")
 
@@ -124,12 +112,12 @@ def konfirmasi(request):
         Post.pilihan = 1
         Post.checklist = True
         Post.save()
-        return HttpResponseRedirect("sesudah")
+        return redirect("/sesudah")
     else:
         try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("/sesudah")
         except:
             return render(request, "pemilu/confirmation.html")
 
@@ -142,12 +130,12 @@ def konfirmasi2(request):
         Post.pilihan = 2
         Post.checklist = True
         Post.save()
-        return HttpResponseRedirect("sesudah")
+        return redirect("/sesudah")
     else:
         try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("sesudah")
         except:
             return render(request, "pemilu/confirmation2.html")
 
@@ -160,12 +148,12 @@ def konfirmasi3(request):
         Post.pilihan = 3
         Post.checklist = True
         Post.save()
-        return HttpResponseRedirect("sesudah")
+        return redirect("/sesudah")
     else:
         try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("sesudah")
         except:
             return render(request, "pemilu/confirmation3.html")
 
@@ -178,12 +166,12 @@ def konfirmasi4(request):
         Post.pilihan = 4
         Post.checklist = True
         Post.save()
-        return HttpResponse("OK")
+        return redirect("/sesudah")
     else:
         try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return HttpResponseRedirect("sesudah")
+            return redirect("/sesudah")
         except:
             return render(request, "pemilu/confirmation4.html")
 

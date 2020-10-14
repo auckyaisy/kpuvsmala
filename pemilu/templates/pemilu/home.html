@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>KPU V SMALA</title>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+        <style type="text/css">
+            
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: 'Montserrat';
+                font-weight: 700;
+            }
+            .welcome-section {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: #000;
+                overflow: hidden;
+            }
+
+            .nmew {
+                position: absolute;
+                top: 50%;
+                transform: translate3d(-53%, -51%, 0);
+                width: 200px;
+                left: 50%;
+                opacity: 0.2;
+
+                transition: opacity 0.5s linear;
+            }
+
+            .welcome-section .content-wrap {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate3d(-50%, -50%, 0);
+            }
+            .welcome-section .content-wrap .fly-in-text {
+                list-style: none;
+            }
+            .welcome-section .content-wrap .fly-in-text li {
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 1.5em;
+                color: #fff;
+                opacity: 1;
+                transition: all 2s ease;
+            }
+            .welcome-section .content-wrap .fly-in-text li:last-child {
+                margin-right: 0;
+            }
+            .welcome-section .content-wrap .enter-button {
+                display: block;
+                text-align: center;
+                font-size: 1.5em;
+                text-decoration: none;
+                text-transform: uppercase;
+                color: #6d6aac;
+                opacity: 1;
+                transition: all 1s ease 2s;
+            }
+            
+            .welcome-section.content-hidden .content-wrap .fly-in-text li { opacity: 0; }
+            .welcome-section.content-hidden .content-wrap .fly-in-text li:nth-child(1) { transform: translate3d(-100px, 0, 0); }
+            .welcome-section.content-hidden .content-wrap .fly-in-text li:nth-child(2) { transform: translate3d(100px, 0, 0); }
+            .welcome-section.content-hidden .content-wrap .enter-button { opacity: 0; transform: translate3d(0, -30px, 0); }
+            
+            
+            @media (min-width: 800px) {
+                .welcome-section .content-wrap .fly-in-text li { font-size: 5em; margin-right: 15px;}
+                .welcome-section .content-wrap .enter-button { font-size: 2.5em; }
+                .nmew {
+                    width: 500px;
+                }
+            }
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        
+        <div class="welcome-section content-hidden">
+            
+            <div class="content-wrap">
+                <ul class="fly-in-text">
+                    <li>KPU V</li>
+                    <li>SMALA</li>
+                </ul>
+                
+                <a href="#" class="enter-button">Masuk</a>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+                 function requestFullScreen(element) {
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) { // Native full screen.
+        requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+}
+
+var elem = document.body; // Make the body go full screen.
+requestFullScreen(elem);
+
+
+            $(function() {
+                
+                var welcomeSection = $('.welcome-section'),
+                    enterButton = welcomeSection.find('.enter-button');
+                
+                setTimeout(function() {
+                    welcomeSection.removeClass('content-hidden');
+                }, 500);
+                
+                enterButton.on('click', function(e) {
+                    e.preventDefault();
+                    setTimeout(function(){window.location.href = "/login";}, 1000);
+                    welcomeSection.addClass('content-hidden').fadeOut();
+                });
+                
+                
+            })();
+            
+            
+            
+        </script>
+
+    </body>
+</html>

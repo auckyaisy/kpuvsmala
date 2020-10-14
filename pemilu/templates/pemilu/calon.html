@@ -1,0 +1,103 @@
+{% extends "pemilu/layout.html" %}
+
+{% block title %}
+    Para Penentu
+{% endblock %}
+
+{% block main %}
+<br><br><br>
+      <div class="lesson-wrapper">
+    <div class="container">
+      <div class="heading">
+        <h2>Cari tahu, kenali, pahami sebelum memilih!</h2>
+      </div>
+      <div class="lessons">
+        <div class="lesson">
+          <div class="lesson-icon">
+            <img src="static/images/image0.jpg">
+             <p>1</p>
+          </div>
+           <p class="text-contents"><span style="font-size: 20px; color: black;"><b>Ahmad Aping</b></span><br><b>Visi:</b> membelikan kastok kpd warga genji<br><b>Misi:</b> Apa hayo</p>
+        </div>
+        <div class="lesson">
+          <div class="lesson-icon">
+            <img src="static/images/image3.jpg">
+            <p>2</p>
+          </div>
+          <p class="text-contents"><span style="font-size: 20px; color: black;"><b>Royyan Pranowo</b></span><br><b>Visi:</b> membelikan kastok kpd warga genji<br><b>Misi:</b> Apa hayo<</p>
+        </div>
+        <div class="lesson">
+          <div class="lesson-icon">
+            <img src="static/images/image2.jpg">
+            <p>3</p>
+          </div>
+          <p class="text-contents"><span style="font-size: 20px; color: black;"><b>Abdan Panda</b></span><br><b>Visi:</b> membelikan kastok kpd warga genji<br><b>Misi:</b> Apa hayo</p>
+        </div>
+        <div class="lesson">
+          <div class="lesson-icon">
+            <img src="static/images/image4.jpg">
+            <p>4</p>
+          </div>
+          <p class="text-contents"><span style="font-size: 20px; color: black;"><b>Wildan Dunnud</b></span><br><b>Visi:</b> membelikan kastok kpd warga genji<br><b>Misi:</b> Apa hayo</p>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+      <style>
+        .lesson-wrapper {
+          padding-bottom: 80px;
+          padding-left: 5%;
+          padding-right: 5%;
+          text-align: center;
+        }
+
+        .heading {
+          padding-top: 15px;
+          padding-bottom: 50px;
+          color: #5f5d60;
+        }
+
+        .heading h2 {
+          font-weight: normal;
+        }
+
+        .lesson {
+          float: left;
+          width: 25%;
+        }
+
+        .lesson-icon {
+          position: relative;
+          margin-right: 5px:
+        }
+
+        .lesson-icon img {
+          position: relative;
+          width: 250px;
+          height: 250px;
+        }
+
+        .lesson-icon p {
+          position: absolute;
+          top: 22%;
+          width: 100%;
+          color: rgba(255,255,255, 0%);
+          font-size: 100px;
+          font-weight: bold;
+        }
+
+        .text-contents {
+          width: 80%;
+          display: inline-block;
+          margin-top: 15px;
+          font-size: 15px;
+          color: #b3aeb5;
+        }
+
+        .heading h3 {
+          font-weight: normal;
+        }
+      </style>
+{% endblock %}

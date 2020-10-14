@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi</title>
+    <link href="{% static "new/style.css" %}" rel="stylesheet">
+    <link reel="icon" type="image/png" sizes="192x192" href="static/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="static/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+</head>
+<body>
+    <div class="container">
+        <h2>Konfirmasi Pilihan</h2>
+        <br>
+                <img src="static/images/royyan.png" alt="">
+        
+    <br>
+                    <br>
+                    <h1>Royyan</h1>
+                    <h1>XI-1</h1>
+                    <br>
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+
+                        <input type="number" value="2" name="2" disabled hidden>
+                        <button href="#" class="new" type="submit" name="save" value="save">Benar, pilih</button>
+                    </form>
+                <input type="button" onclick="window.location.href = '/vote';" class="batal" value="Batalkan pilihan"/>
+
+    </div>
+</body>
+<style>
+    h1,h2,h3 {
+        color: white;
+    }
+    body {
+flex-direction: column;        
+        justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #131313;
+}
+.container {
+    display: flex;
+    flex-direction: column;        
+        justify-content: center;
+  align-items: center;
+}
+.container img {
+    width: 50%;
+}
+
+.new a {
+    text-decoration: none;
+}
+
+.new {
+  padding: 10px 20px;
+  border-radius: 7px;
+  background-color: #fff;
+  margin-top: 8px;
+  text-align: center;
+  text-decoration:e none;
+  width: 40vw;
+  font-weight: 600;
+  color: #000;
+  font-size: larger;
+  /* transform: translateY(50px); */
+  transition: 0.5s;}
+  .batal {
+      color: WHITE;
+      text-decoration: none;
+  margin-top: 8px;
+      background-color: red;
+      padding: 5px 15px;
+      border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .new:active, .batal:active {s
+    background-color: #000;
+  }
+  .new:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+  }
+  .batal:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+  }
+  
+</style>
+</html>

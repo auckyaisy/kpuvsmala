@@ -1,0 +1,86 @@
+{% extends "pemilu/layout.html" %}
+
+
+{% block title %}
+    pemilu smala
+{% endblock %}
+
+{% block main %}
+    <main>
+      <br><br><br><br><br><br><br><br><br><br>
+      <p>
+         <h1><strong>Data Pemilih</strong></h1><br>
+  
+      <h2>{{user.username}}</h2>
+      <h2>{{user.last_name}}</h2>
+      <br>
+      <div class="container text-center">
+        <form action="/verifikasi" method="POST">
+          {% csrf_token %}
+          {% if message %}
+          <span style="color: white; background-color: red; font-size:20px; padding: 5px;">{{ message }}</span>
+        {% endif %}
+          <script src='https://www.google.com/recaptcha/api.js'></script>
+          <div class="g-recaptcha" data-sitekey="6LfAUNYZAAAAAIaKaBKRg0UXHgIi0BtptuthRtZN"></div>
+          <button class="g-recaptcha btn" >Lanjutkan</button>
+        </form>
+      </div>
+      <br><br>
+    </main>
+
+    <script>
+    function enableButton2() {
+        document.getElementById("lanjut").disabled = false;
+    }
+  </script>
+
+  <script>
+    const inputs = document.querySelectorAll(".input");
+
+
+      function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+      }
+
+      function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+          parent.classList.remove("focus");
+        }
+      }
+
+
+      inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+      });
+
+  </script>
+  <style>
+    #vw{
+      position: absolute;
+
+      margin-right: 0px;
+      left: 0%;
+    }
+    body {
+      background-color: #071f27;
+      color: #d9d9d9;
+    }
+    main {
+      margin-top: 60px;
+      position: absolute;
+  left: 50%;
+  top: 50%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    transform: translate(-50%, -80%);
+    font-weight: bold;
+    font-size: 50px;
+    }
+      .verif {
+    text-decoration: none;
+      </style>
+{% endblock %}

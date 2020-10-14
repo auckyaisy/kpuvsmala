@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Kata-kata</title>
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{% static 'sesudah/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<main role="main" class="main-content" id="main-content">
+    <div class="titleCont">
+        <h1 class="main-title" id="main-title">
+            <span class="1">"Suatu kontribusi terkecil</span><br><span style="padding-left:100px" class="2">yang telah dilakukan</span><br><span style="padding-right:110px" class="3">berisi akan harapan</span><br><span style="padding-left:-20px" class="4">tentang masa depan."</span>
+        </h1>
+    </div>
+    <canvas id="noise" class="noise"></canvas>
+  <div class="vignette"></div>
+  <div id="player">
+    <audio autoplay hidden>
+     <source src="{% static 'music.mp3' %}" type="audio/mpeg"> 
+    </audio>
+</div>
+  
+</main>
+<script>
+  setTimeout(function(){
+     window.location.href = '/terimakasih';
+  }, 12000).fadeOut();
+</script>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js'></script>
+  <script src='{% static 'sesudah/noise.js' %}'></script>
+  <script src='{% static 'sesudah/water.js' %}'></script>
+  <script src='{% static 'sesudah/script.js' %}'></script>
+</body>
+</html>

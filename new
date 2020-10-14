@@ -1,0 +1,34 @@
+u = User.objects.get(username="admin")
+Post = UserProfile()
+Post.user = u
+Post.pilihan = 2
+Post.checklist = True
+
+
+
+>>> try:
+...     UserProfile.objects.get(user=u)
+... except:
+...     print("error")
+
+
+def konfirmasi(request):
+    if request.method == "POST":
+        if form.is_valid():
+            u = User.objects.get(username=f"{request.user.username}")
+            Post = UserProfile()
+            Post.user = u
+            Post.pilihan = 2
+            Post.checklist = True
+            post.save()
+            return HttpResponse("OK")
+    else:
+        try:
+            UserProfile.objects.get(user=u)
+            return HttpResponse("sdh voting")
+        except:
+            return render(request, "pemilu/confirmation.html")
+
+
+
+for every username in user cehck input

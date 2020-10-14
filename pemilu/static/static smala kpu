@@ -1,0 +1,157 @@
+
+footer {
+  background-color:#c8d6e5;
+  font-family: 'Montserrat';
+}
+
+footer p {
+  font-style: oblique;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+}
+
+.headcontain {
+  max-width: 1920px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: #071f27;
+  position :fixed;
+  top: 0;
+  z-index: 10;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+img.logo {
+    line-height: 60px;
+  padding: 0 25px;
+  margin-top: 5px;
+  width: 20%;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  margin-right: -25px;
+}
+
+.header-right a {
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+.header-right a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+main, body {
+  margin-top: 30px;
+}
+
+a.login {
+  margin-right: 10px;
+}
+
+img.smala {
+      line-height: 60px;
+  margin-top: 8px;
+    width: 7%;
+}
+
+
+
+
+-----------------------------------------------------------
+
+
+footer {
+  background-color:#c8d6e5;
+  font-family: 'Montserrat';
+}
+
+footer p {
+  font-style: oblique;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+}
+
+.headcontain {
+  max-width: 1920px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+header {
+  height: 65px;
+  width: 100%;
+  background-color: #071f27;
+  position :fixed;
+  top: 0;
+  z-index: 10;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+img.logo {
+    line-height: 60px;
+  padding: 0 25px;
+  margin-top: 2px;
+  width: 16%;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  margin-right: -25px;
+}
+
+.header-right a {
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+.header-right a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+main, body {
+  margin-top: 30px;
+}
+
+a.login {
+  margin-right: 10px;
+}
+
+img.smala {
+      line-height: 60px;
+  margin-top: 2px;
+   padding-right: 25px;
+    width: 9%;
+}
+
+img.medsmal {
+  line-height: 60px;
+  margin-top: 3px;
+  width: 8%;
+}

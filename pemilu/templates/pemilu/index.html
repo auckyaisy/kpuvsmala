@@ -1,0 +1,95 @@
+{% extends "pemilu/layout.html" %}
+
+{% block title %}
+    Halaman Muka
+{% endblock %}
+
+    
+{% block main %}
+{% load static %}
+
+<div id="loader">
+    <img src="{% static 'vote.gif' %}" alt="">
+</div>
+<div class="pilihan">
+    <a href="/verifikasi" class="btn">Tentukan Nasib Almamatermu</a>
+</div>
+<div class="pilihan1">
+    <a href="/calon"class="btn">Kenali Pemimpinmu, Mantapkan Pilihanmu</a>
+</div>
+<style>
+    body {
+        background-image: url("{%static "1.png"%}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .pilihan {
+        text-align: center;
+        font-family: montserrat;
+                background-color: rgba(255,255,255,50%);
+        position: absolute;
+        margin: 0;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .pilihan1 {
+        text-align: center;
+        font-family: montserrat;
+                background-color: rgba(255,255,255,50%);
+        position: absolute;
+        margin: 0;
+        position: absolute;
+        bottom: 12%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .pilihan btn {
+
+    }
+    #loader {
+        height: 9999px;
+        width: 9999px;
+        background-color: white;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 9999;
+        transition: all .5s;
+    }
+    #loader img{
+        position: absolute;
+        width: 2%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #logo {
+         width: 100%;
+        top: 70%;
+    }
+    html, body {margin: 0; height: 100%; overflow: hidden}
+    @media all and (max-width: 670px) {
+    body {
+        background-image: url("{%static "images/2.png"%}");
+    }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script>
+    var loader = document.getElementById("loader");
+
+    window.addEventListener("load",function(){
+        setTimeout(function () {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+        }, 1500);
+    })
+</script>
+{% endblock %}

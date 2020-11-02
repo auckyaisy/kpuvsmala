@@ -9,6 +9,7 @@ from .decorators import check_recaptcha
 from .models import UserProfile, User
 from django.contrib.auth.decorators import login_required
 
+captresult = False
 
 def index(request):
     if not request.user.is_authenticated:
@@ -17,18 +18,21 @@ def index(request):
 
 
 def login_view(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect(reverse("index"))
-        else:
-            return render(request, "pemilu/login.html", {
-                "message": "Tidak Ditemukan"
-            })
-    return render(request, "pemilu/login.html")
+    if not request.user.is_authenticated:
+        if request.method == "POST":
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse("index"))
+            else:
+                return render(request, "pemilu/login.html", {
+                    "message": "Tidak Ditemukan"
+                })
+        return render(request, "pemilu/login.html")
+    else:
+        return redirect("/")
 
 
 def logout_view(request):
@@ -46,7 +50,6 @@ def verifikasi(request):
         return redirect("/sesudah")
     except:
         if request.method == 'POST':
-
             ''' Begin reCAPTCHA validation '''
             recaptcha_response = request.POST.get('g-recaptcha-response')
             data = {
@@ -58,7 +61,9 @@ def verifikasi(request):
             ''' End reCAPTCHA validation '''
 
             if result['success']:
-                return redirect('/vote')
+                global captresult
+                captresult = True
+                return redirect('/vote/')
             else:
                 return render(request, "pemilu/vote.html", {
                     "message": "Captcha Salah"
@@ -71,11 +76,14 @@ def verifikasi(request):
 @check_recaptcha
 def vote(request):
     try:
-            u = User.objects.get(username=f"{request.user.username}")
-            UserProfile.objects.get(user=u)
-            return redirect("/sesudah")
+        u = User.objects.get(username=f"{request.user.username}")
+        UserProfile.objects.get(user=u)
+        return redirect("/sesudah")
     except:
+        if captresult == True:
             return render(request, "pemilu/kartu.html")
+        else:
+            return redirect("/verifikasi/")
 
 @login_required
 def kenali(request):
@@ -84,20 +92,24 @@ def kenali(request):
 
 @login_required
 def visi1(request):
-    return render(request, "pemilu/visi1.html")
+    return render(request, "pemilu/page2.html")
+    
+@login_required
+def visi(request):
+    return render(request, "pemilu/index.html")
 
 
 @login_required
 def visi2(request):
-    return render(request, "pemilu/visi2.html")
+    return render(request, "pemilu/page1.html")
 
 @login_required
 def visi3(request):
-    return render(request, "pemilu/visi3.html")
+    return render(request, "pemilu/page3.html")
 
 @login_required
 def visi4(request):
-    return render(request, "pemilu/visi4.html")
+    return render(request, "pemilu/page4.html")
 
 
 @login_required
@@ -128,7 +140,7 @@ def konfirmasi(request):
             return render(request, "pemilu/confirmation.html")
 
 @login_required
-def konfirmasi2(request):
+def konfirmasi1(request):
     if request.method == "POST":
         u = User.objects.get(username=f"{request.user.username}")
         Post = UserProfile()
@@ -141,9 +153,27 @@ def konfirmasi2(request):
         try:
             u = User.objects.get(username=f"{request.user.username}")
             UserProfile.objects.get(user=u)
-            return redirect("sesudah")
+            return redirect("/sesudah")
         except:
             return render(request, "pemilu/confirmation2.html")
+
+@login_required
+def konfirmasi2(request):
+    if request.method == "POST":
+        u = User.objects.get(username=f"{request.user.username}")
+        Post = UserProfile()
+        Post.user = u
+        Post.pilihan = 3
+        Post.checklist = True
+        Post.save()
+        return redirect("/sesudah")
+    else:
+        try:
+            u = User.objects.get(username=f"{request.user.username}")
+            UserProfile.objects.get(user=u)
+            return redirect("sesudah")
+        except:
+            return render(request, "pemilu/confirmation4.html")
 
 @login_required
 def konfirmasi3(request):
@@ -151,7 +181,7 @@ def konfirmasi3(request):
         u = User.objects.get(username=f"{request.user.username}")
         Post = UserProfile()
         Post.user = u
-        Post.pilihan = 3
+        Post.pilihan = 4
         Post.checklist = True
         Post.save()
         return redirect("/sesudah")
@@ -169,7 +199,7 @@ def konfirmasi4(request):
         u = User.objects.get(username=f"{request.user.username}")
         Post = UserProfile()
         Post.user = u
-        Post.pilihan = 4
+        Post.pilihan = 5
         Post.checklist = True
         Post.save()
         return redirect("/sesudah")
@@ -179,7 +209,7 @@ def konfirmasi4(request):
             UserProfile.objects.get(user=u)
             return redirect("/sesudah")
         except:
-            return render(request, "pemilu/confirmation4.html")
+            return render(request, "pemilu/confirmation5.html")
 
 def landingpage(request):
     return render(request, "pemilu/home.html")
@@ -190,7 +220,11 @@ def sesudah(request):
 
 @login_required
 def slamanesmalane(request):
-    return render(request, "pemilu/slamane.html")
+    if request.method == "POST":
+        logout(request)
+        return redirect("https://www.instagram.com/mediasmalane")
+    else:
+        return render(request, "pemilu/slamane.html")
 
 @login_required
 def terimakasih(request):

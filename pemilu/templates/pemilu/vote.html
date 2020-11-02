@@ -15,7 +15,7 @@
       <h2>{{user.last_name}}</h2>
       <br>
       <div class="container text-center">
-        <form action="/vote" method="POST">
+        <form method="POST">
           {% csrf_token %}
           {% if message %}
           <span style="color: white; background-color: red; font-size:20px; padding: 5px;">{{ message }}</span>

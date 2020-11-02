@@ -15,20 +15,20 @@
     <div class="container">
         <h2>Konfirmasi Pilihan</h2>
         <br>
-        <img src="{% static 'images/wildan.png' %}" alt="">
+                        <img src="{% static 'kartu/apro.png' %}" alt="">
         
     <br>
                     <br>
-                    <h1>Wild</h1>
-                    <h1>XI-1</h1>
+                    <h1>Aprodytha Widya Oryza</h1>
+                    <h1>XI-3</h1>
                     <br>
-                    <form action="#" method="POST">
+                    <form method="POST">
                         {% csrf_token %}
 
-                        <input type="number" value="4" name="4" disabled hidden>
+                        <input type="number" value="3" name="3" disabled hidden>
                         <button href="#" class="new" type="submit" name="save" value="save">Benar, pilih</button>
                     </form>
-                <input type="button" onclick="window.location.href = '/vote';" class="batal" value="Batalkan pilihan"/>
+                <input type="button" onclick="window.location.href = '/vote/';" class="batal" value="Batalkan pilihan"/>
 
     </div>
 </body>

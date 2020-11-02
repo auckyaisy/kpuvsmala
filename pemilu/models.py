@@ -4,7 +4,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-  pass
+  kelas = models.IntegerField(null=True)
+  pararel = models.IntegerField(null=True)
+  absen = models.IntegerField(null=True)
 
 # Create your models here.
 class UserProfile(models.Model):

@@ -1,1 +1,1 @@
-web: gunicorn kpuvsmala.wsgi --log-file -
+web: gunicorn kpuvsmala.wsgi

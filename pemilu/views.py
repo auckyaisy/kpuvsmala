@@ -80,7 +80,10 @@ def vote(request):
         UserProfile.objects.get(user=u)
         return redirect("/sesudah")
     except:
-        return render(request, "pemilu/kartu.html")
+        if captresult == True:
+            return render(request, "pemilu/kartu.html")
+        else:
+            return redirect("/verifikasi/")
 
 @login_required
 def kenali(request):
@@ -288,11 +291,11 @@ def count(request):
                     a.append(UserProfile.objects.get(user=u))
                 except:
                     pass
-    return render(request, "pemilu/count.html", {
-        "sdhs": a,
-        "kelas": f"{i}",
-        "pararel": f"{j}"
-    })
+        return render(request, "pemilu/count.html", {
+            "sdhs": a,
+            "kelas": f"{i}",
+            "pararel": f"{j}"
+        })
     # k = UserProfile.objects.filter(kelas=6)
     return render(request, "pemilu/count.html", {
         

@@ -80,10 +80,7 @@ def vote(request):
         UserProfile.objects.get(user=u)
         return redirect("/sesudah")
     except:
-        if captresult == True:
-            return render(request, "pemilu/kartu.html")
-        else:
-            return redirect("/verifikasi/")
+        return render(request, "pemilu/kartu.html")
 
 @login_required
 def kenali(request):

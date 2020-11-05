@@ -20,15 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^zh$@rw%6(#xw&-8$o)zx!-9co(8pd+08%*h8d&lb)^4))k4s^'
+# SECRET_KEY = '^zh$@rw%6(#xw&-8$o)zx!-9co(8pd+08%*h8d&lb)^4))k4s^'
 
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 PPEND_SLASH=False
 
 ALLOWED_HOSTS = [

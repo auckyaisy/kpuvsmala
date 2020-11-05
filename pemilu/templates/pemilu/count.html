@@ -1,24 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>belajar menghitung</title>
-</head>
-<body>
-    <h1>maaf tdk sy designkan apa2 utk ini krn sy capek</h1><h2>- yg buat 2020</h2>
-    <h2>nomor urut 1 : {{satu}}<br>
-    nomor urut 2 : {{dua}}<br>
-    nomor urut 3 : {{tiga}}<br>
-    nomor urut 4 : {{empat}}<br>
-    nomor urut 5 : {{lima}}</h2>
-<br><br><br>
+{% extends "pemilu/layout.html" %}
+
+
+{% block title %}
+    belajar menghitung
+{% endblock %}
+{% load static %}
+{% block main %}
+
+           
+<br>
     <h1>yang sudah nyoblos</h1>
     <h2>yg belum cari aj sendiri y</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="kelas">Kelas:</label>
+        <select id="kelas" class="form-control" name="kelas">
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="5">guru</option>
+        <option value="6">karyawan</option>
+        </select>
+        <label for="pararel">Gen:</label>
+        <select id="pararel" class="form-control" name="pararel">
+        <option value="1">genji best gen</option>
+        <option value="2">angels</option>
+        <option value="3">best</option>
+        <option value="4">forteam</option>
+        <option value="5">limo</option>
+        <option value="6">classix</option>
+        <option value="7">djitu</option>
+        <option value="8">arspan</option>
+        <option value="9">lasso</option>
+        <option value="10">sossh</option>
+        <option value="0">guru & karyawan</option>
+        </select>
+        <br>
+        <button type="submit" style="width: 100%;" class="btn" value="Submit">Lihat</button>
+    </form>
+    <h1>{% if kelas == "5" %}
+        guru
+        {% elif kelas == "6" %}
+        karyawan
+        {% else %}
+        {{ kelas}}
+        {% endif %}
+        <span>-</span>
+        {% if pararel == "0" %}
+         <----- pilih kelas guru / karyawan
+        {% else %}
+        {{pararel}}
+        {% endif %}
+    </h1>
     <ul>
         {% for sdh in sdhs%}
-        <li>{{sdh}}</li>
+                <li>{{sdh}}</li>
         {% endfor %}
+        
+
     </ul>
-</body>
-</html>
+    <footer class="text-center justify-content-center">
+      <strong>pr</strong><strike>ubdok</strike><strong>gromramrer kpu v smala @2020</strong>
+    </footer>
+{% endblock %}

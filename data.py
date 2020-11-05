@@ -17,7 +17,8 @@ from django.contrib.auth.hashers import make_password
 
 from django.contrib.auth import get_user_model
 from django.conf import settings
-User = get_user_model()
+from pemilu.models import User
+# User = get_user_model()
 
 file = 'import.csv'
 
@@ -33,6 +34,9 @@ for row in data:
         Post.first_name = row[1]
         Post.is_staff = "0"
         Post.is_active = "1"
+        Post.kelas = row[7]
+        Post.pararel = row[6]
+        Post.absen = row[5]
         Post.date_joined = "2020-09-28 05:51:42.521991"
         Post.last_name=row[2]
         Post.save()

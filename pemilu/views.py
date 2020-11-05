@@ -80,10 +80,7 @@ def vote(request):
         UserProfile.objects.get(user=u)
         return redirect("/sesudah")
     except:
-        if captresult == True:
-            return render(request, "pemilu/kartu.html")
-        else:
-            return redirect("/verifikasi/")
+        return render(request, "pemilu/kartu.html")
 
 @login_required
 def kenali(request):
@@ -231,20 +228,74 @@ def terimakasih(request):
     return render(request, "pemilu/terimakasih.html")
 
 @login_required
-def count(request):
+def saran(request):
+    return render(request, "pemilu/saran.html")
+
+@login_required
+def hasil(request):
     satu = UserProfile.objects.filter(pilihan=1)
     dua = UserProfile.objects.filter(pilihan=2)
     tiga = UserProfile.objects.filter(pilihan=3)
     empat = UserProfile.objects.filter(pilihan=4)
     lima = UserProfile.objects.filter(pilihan=5)
     sdh = UserProfile.objects.all()
-    return render(request, "pemilu/count.html", {
+    return render(request, "pemilu/hasil.html", {
                     "satu": len(satu),
                     "dua": len(dua),
                     "tiga": len(tiga),
                     "empat": len(empat),
                     "lima": len(lima),
                     "sdhs": sdh
+                })
+
+@login_required
+def count(request):
+    # satu = UserProfile.objects.filter(pararel=1)
+    # dua = UserProfile.objects.filter(pararel=1)
+    # tiga = UserProfile.objects.filter(pararel=1)
+    # empat = UserProfile.objects.filter(pararel=1)
+    # lima = UserProfile.objects.filter(pararel=1)
+    # enam = UserProfile.objects.filter(pararel=1)
+    # tujuh = UserProfile.objects.filter(pararel=1)
+    # lapan = UserProfile.objects.filter(pararel=1)
+    # sembilan = UserProfile.objects.filter(pararel=1)
+    # sepuluh = UserProfile.objects.filter(pararel=1)
+    # x = UserProfile.objects.filter(kelas=10)
+    # xi = UserProfile.objects.filter(kelas=11)
+    # xii = UserProfile.objects.filter(kelas=12)
+    # g = UserProfile.objects.filter(kelas=5)
+    sdh = UserProfile.objects.all()
+    if request.method == "POST":
+        a = []
+        i = request.POST.get('kelas')
+        j = request.POST.get('pararel')
+        for k in range(1,65):
+            if i == 5:
+                try:
+                    u = User.objects.get(kelas=5,pararel=0,absen=k)
+                    a.append(UserProfile.objects.get(user=u))
+                except:
+                    pass
+            elif i == 6:
+                try:
+                    u = User.objects.get(kelas=6,pararel=0,absen=k)
+                    a.append(UserProfile.objects.get(user=u))
+                except:
+                    pass
+            else:
+                try:
+                    u = User.objects.get(kelas=i, pararel=j,absen=k)
+                    a.append(UserProfile.objects.get(user=u))
+                except:
+                    pass
+    return render(request, "pemilu/count.html", {
+        "sdhs": a,
+        "kelas": f"{i}",
+        "pararel": f"{j}"
+    })
+    # k = UserProfile.objects.filter(kelas=6)
+    return render(request, "pemilu/count.html", {
+        
                 })
 
 

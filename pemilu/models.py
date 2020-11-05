@@ -16,4 +16,4 @@ class UserProfile(models.Model):
     checklist = models.BooleanField()
 
     def __str__(self):
-        return f"{self.user}"
+        return f" {self.user} | {self.user.last_name} | {self.user.kelas}-{self.user.pararel}  {self.user.absen}" 

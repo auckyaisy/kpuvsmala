@@ -25,5 +25,7 @@ urlpatterns = [
     path("slamanesmalane/", views.slamanesmalane, name="slamanesmalane"),
     path("terimakasih/", views.terimakasih, name="terimakasih"),
     path("count/", views.count, name="count"),
+    path("saran/", views.saran, name="saran"),
+    path("hspascapemiluhs/", views.hasil, name="hasil"),
     path("konfirmasi/4/", views.konfirmasi4, name="konfirmasi4")
 ]

@@ -6,7 +6,8 @@ from django.conf import settings
 from django.shortcuts import redirect
 import requests
 from .decorators import check_recaptcha
-from .models import UserProfile, User
+from .models import UserProfile, User, Pilih
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
 captresult = False
@@ -21,6 +22,42 @@ def selesai(request):
 
 def rekapitulasi(request):
     return render(request, "pemilu/rekap.html")
+
+def data(request):
+    return render(request, "pemilu/data.html")
+
+
+def angka(request):
+    a=Pilih.objects.filter(pilihan="Hendra")
+    b=Pilih.objects.filter(pilihan="Aproytha")
+    c=Pilih.objects.filter(pilihan="Abi")
+    d=Pilih.objects.filter(pilihan="Aisy")
+    e=Pilih.objects.filter(pilihan="Shafira")
+    f=Pilih.objects.all()
+    return render(request, "pemilu/angka.html", {
+        "hen": len(a),
+        "apr": len(b),
+        "abi": len(c),
+        "ais": len(d),
+        "shaf": len(e),
+        "angk": len(f)
+    })
+
+
+def getPilih(request):
+    queryset=Pilih.objects.all()
+    a=Pilih.objects.filter(pilihan="Hendra")
+    b=Pilih.objects.filter(pilihan="Aprodytha")
+    c=Pilih.objects.filter(pilihan="Abi")
+    d=Pilih.objects.filter(pilihan="Aisy")
+    e=Pilih.objects.filter(pilihan="Shafira")
+    return JsonResponse({"pilih":list(queryset.values()),
+        "hen": len(a),
+        "apr": len(b),
+        "abi": len(c),
+        "ais": len(d),
+        "shaf": len(e)
+    })
 # def login_view(request):
 #     if not request.user.is_authenticated:
 #         if request.method == "POST":

@@ -19,7 +19,9 @@ class UserProfile(models.Model):
         return f" {self.user} | {self.user.last_name} | {self.user.kelas}-{self.user.pararel}  {self.user.absen}" 
 
 class Pilih(models.Model):
-  pilihan = models.CharField(max_length=50,blank=False,verbose_name="Pilihan")
+  id=models.AutoField(primary_key=True)
+  pilihan = models.CharField(max_length=50,verbose_name="Pilihan")
+  token = models.CharField(max_length=50,null=True,verbose_name="token")
   
   def __str__(self):
     return self.pilihan

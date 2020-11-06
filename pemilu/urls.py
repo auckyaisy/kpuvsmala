@@ -8,6 +8,7 @@ urlpatterns = [
     path('selesai/', views.selesai, name='selesai'),
     path('data/', views.data, name='data'),
     path('angka/', views.angka, name='angka'),
+    path('home/', views.home, name='home'),
     path('rekapitulasi/', views.rekapitulasi, name='rekapitulasi')
     # path('login/', views.login_view, name='login'),
     # path("logout/", views.logout_view, name="logout"),

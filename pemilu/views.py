@@ -25,6 +25,8 @@ def rekapitulasi(request):
 
 def data(request):
     return render(request, "pemilu/data.html")
+def home(request):
+    return render(request, "pemilu/hasi.html")
 
 
 def angka(request):

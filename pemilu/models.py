@@ -18,8 +18,8 @@ class UserProfile(models.Model):
     def __str__(self):
         return f" {self.user} | {self.user.last_name} | {self.user.kelas}-{self.user.pararel}  {self.user.absen}" 
 
-# class Pilih(models.Model):
-#   pilihan = models.CharField(max_legth=50,blank=False,verbose_name="Pilihan")
+class Pilih(models.Model):
+  pilihan = models.CharField(max_length=50,blank=False,verbose_name="Pilihan")
   
-#   def __str__(self):
-#     return self.pilihan
+  def __str__(self):
+    return self.pilihan

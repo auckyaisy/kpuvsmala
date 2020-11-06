@@ -31,7 +31,7 @@ def home(request):
 
 def angka(request):
     a=Pilih.objects.filter(pilihan="Hendra")
-    b=Pilih.objects.filter(pilihan="Aproytha")
+    b=Pilih.objects.filter(pilihan="Aprodytha")
     c=Pilih.objects.filter(pilihan="Abi")
     d=Pilih.objects.filter(pilihan="Aisy")
     e=Pilih.objects.filter(pilihan="Shafira")
